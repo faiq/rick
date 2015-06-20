@@ -5,21 +5,27 @@ var error = function (err, response, body) {
         console.log('Data [%s]', data);
     };
 
-    var Twitter = require('twitter-node-client').Twitter;
+var Twitter = require('twitter');
 
     //Get this data from your twitter apps dashboard
     var config = {
-        "consumerKey": "4Tp0rLjI44zBb6uBDliUumXoF",
-        "consumerSecret": "Cy2zijcBlCloILZ5toCOavZpxjfLYgEIwXMeJXI2Tss24Z2NVh",
-        "accessToken": "37560514-YhirZHsCo4n9t0JWPl6ox1ks66o4nXxqD1v2CQwX4",
-        "accessTokenSecret": "2tMhp4BQOW7JHju7rlTSbTYhMbQLfCQX9oNZk7GLwv0hu",
+        "consumer_key": "4Tp0rLjI44zBb6uBDliUumXoF",
+        "consumer_secret": "Cy2zijcBlCloILZ5toCOavZpxjfLYgEIwXMeJXI2Tss24Z2NVh",
+        "access_token_key": "37560514-YhirZHsCo4n9t0JWPl6ox1ks66o4nXxqD1v2CQwX4",
+        "access_token_secret": "2tMhp4BQOW7JHju7rlTSbTYhMbQLfCQX9oNZk7GLwv0hu",
     }
 
-    var twitter = new Twitter(config);
+    var client = new Twitter(config);
 
-    twitter.getUserTimeline({ screen_name: 'faiqus', count: '1'},
-     function(error, success) {
-    		console.log("hi")
+    var tweet_array = [];
+    client.get('statuses/user_timeline', { screen_name: 'faiqus', count: '5'},
+     function(error, tweets, response) {
+    	if (!error) {
+    		Array.prototype.map.call(tweets, function(item) {
+    			tweet_array.push(item["text"])
+    		});
+    		console.log(tweet_array);
+  			}
     	});
 
 
