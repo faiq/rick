@@ -4,12 +4,11 @@ var express = require("express")
   , bodyParser = require('body-parser')
   , twitter = require('./twitter')
   , router = express()
+  , AlchemyAPI = require('./alchemyapi')
+  , alchemyapi = new AlchemyAPI()
 
-var AlchemyAPI = require('./alchemyapi')
-var alchemyapi = new AlchemyAPI()
-
-demo_text = "AlchemyAPI has raised $2 million to extend the capabilities of its deep learning technology that applies artificial intelligence to read and understand web pages, text documents, emails, tweets, and other forms of content. Access Venture Partners led the Series A round, which the company will use to ramp up its sales and marketing, make hires and launch new services."
-
+router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({ extended: false }))
  
 function sentiment(text, cb) {
     alchemyapi.sentiment("text", text, {}, function(response) {
@@ -39,15 +38,6 @@ function concepts(text, cb) {
     });
 }
 
-sentiment(demo_text)
-keywords(demo_text)
-concepts(demo_text)
-
-router.use(bodyParser.json())       
-router.use(bodyParser.urlencoded({  
-  extended: true
-})) 
-
 router.set('view engine', 'ejs')
 router.use(express.static(path.join(__dirname + '/assets')))
 
@@ -55,6 +45,12 @@ router.get('/', function (req, res) {
   res.render('index')
 })
 
+router.post('/submit', function (req, res) {
+  twitter(req.body.twitterhandle, function (err, arr){ 
+    if (err) res.send(err)
+    
+  })
+})
 
 http.createServer(router).listen('3000', '127.0.0.1')
 
