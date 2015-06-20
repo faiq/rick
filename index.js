@@ -11,31 +11,31 @@ var alchemyapi = new AlchemyAPI()
 demo_text = "AlchemyAPI has raised $2 million to extend the capabilities of its deep learning technology that applies artificial intelligence to read and understand web pages, text documents, emails, tweets, and other forms of content. Access Venture Partners led the Series A round, which the company will use to ramp up its sales and marketing, make hires and launch new services."
 
  
-function sentiment(text) {
+function sentiment(text, cb) {
     alchemyapi.sentiment("text", text, {}, function(response) {
-    console.log("Sentiment: " + response["docSentiment"]["type"])
+    cb(response["docSentiment"]["type"])
     });
 }
 
-function keywords(text) {
+function keywords(text, cb) {
     alchemyapi.keywords("text", text, {}, function(response) {
         var keywords_json = response["keywords"]
         var keywords = []
         Array.prototype.map.call(keywords_json, function(item) {
             keywords.push(item['text'])
         })
-        console.log("Keywords: %s", keywords.toString())
+        cb(keywords.toString())
     });
 } 
 
-function concepts(text) {
+function concepts(text, cb) {
     alchemyapi.concepts("text", text, {}, function(response) {
         var concepts_json = response["concepts"]
         var concepts = []
         Array.prototype.map.call(concepts_json, function(item) {
             concepts.push(item['text'])
         })
-        console.log("Concepts: %s", concepts.toString())
+        cb(concepts.toString())
     });
 }
 
