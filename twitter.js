@@ -15,7 +15,7 @@ var config = {
     "access_token_secret": "2tMhp4BQOW7JHju7rlTSbTYhMbQLfCQX9oNZk7GLwv0hu",
 }
 
-module.export = function(name, cb) {
+module.exports = function(name, cb) {
   var client = new Twitter(config)
   var name = "faiqus"
   var tweet_array = []
