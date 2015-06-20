@@ -1,0 +1,18 @@
+html { 
+	background: url('/background.jpeg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  }
+body {
+	background-color: transparent
+} 
+form { 
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -250px 0 0 -150px;
+}
