@@ -4,19 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test" : "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/faiq/rick.git"
   },
-  "author": "",
+  "author": "Peeps",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/faiq/rick/issues"
   },
   "homepage": "https://github.com/faiq/rick#readme",
   "dependencies": {
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "request": "^2.27.0",
+    "consolidate" : "^0.9.1",
+    "dustjs-linkedin": "^2.0.3"
   }
 }
