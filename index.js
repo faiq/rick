@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({
 })) 
 
 router.set('view engine', 'ejs')
-router.use(express.static(path.join(__dirname + '/views')));
+router.use(express.static(path.join(__dirname + '/assets')))
 
 router.get('/', function (req, res) {
   res.render('index')
