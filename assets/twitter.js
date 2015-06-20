@@ -28,4 +28,4 @@ client.get('statuses/user_timeline', { screen_name: name, count: '5'},
 			}
 	});
 
-
+exports.tweet_array = tweet_array
