@@ -17,7 +17,6 @@ var config = {
 
 module.exports = function(name, cb) {
   var client = new Twitter(config)
-  var name = "faiqus"
   var tweet_array = []
   client.get('statuses/user_timeline', { screen_name: name, count: '5'}, function(error, tweets, response) {
   	if (error) return cb(error)

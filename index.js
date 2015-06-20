@@ -48,7 +48,11 @@ router.get('/', function (req, res) {
 router.post('/submit', function (req, res) {
   twitter(req.body.twitterhandle, function (err, arr){ 
     if (err) res.send(err)
-    
+    var tweets = arr.toString().replace (/,/g, " ")
+    console.log(tweets)
+    concepts(tweets, function (concept) { 
+      res.send(concept)
+    })
   })
 })
 
