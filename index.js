@@ -51,7 +51,7 @@ router.post('/submit', function (req, res) {
     var tweets = arr.toString().replace (/,/g, " ")
     console.log(tweets)
     concepts(tweets, function (concept) { 
-      res.send(concept)
+      res.render('rec', {concepts: concept})
     })
   })
 })

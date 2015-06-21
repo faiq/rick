@@ -16,3 +16,12 @@ form {
 	left: 50%;
 	margin: -250px 0 0 -150px;
 }
+
+.center { 
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -300px 0 0 -150px
+}	
